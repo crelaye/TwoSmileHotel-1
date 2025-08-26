@@ -56,7 +56,7 @@ app.use((req, res, next) => {
 
 
 const pool = new Pool({
-  connectionString: process.env.DB_HOST,
+  connectionString: "postgresql://twosmilehotel_user:LImxRa6NacLpclVVMMtvZwYTbvqHGpB1@dpg-d2ljpv3e5dus738tkisg-a.frankfurt-postgres.render.com/twosmilehotel",
   ssl: {
     rejectUnauthorized: false,
   },
@@ -984,6 +984,7 @@ app.listen(port,(err)=>{
 }).on('error',()=>{
     process.exit(1)
 });
+
 
 
 
