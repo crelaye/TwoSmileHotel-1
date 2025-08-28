@@ -383,8 +383,8 @@ app.post('/register',async (req,res)=>{
         value:[firstname,lastname,hashed,email,tel]
     }
 /* Registration info stored to be used in other parts of the code */
-    cache.put('registrationData',{firstname,lastname,passowrd,email,tel});
-    const cachedData=cache.get('registrationData');
+    cache.put(`RegistrationData${email}`,{firstname,lastname,passowrd,email,tel});
+    const cachedData=cache.get(`RegistrationData${email}`);
     console.log(cachedData.firstname,cachedData.lastname + " " + 'I want to be like you')
     const {text,value}=insert;
     await pool.query(text,value);
@@ -448,8 +448,8 @@ app.post('/bookRoom', async (req, res) => {
         const whi=await pool.query(gett1,gett2);
         roomId = whi.rows[0].phone_numbers;
         console.log(roomId);
-        cache.put('bookingData',{CustomerName,check_in,check_out,roomId,roomType,no_of_rooms,phone_number,emaill});
-        const cachedBooked=cache.get('bookingData');
+        cache.put(`bookingData${emaill}`,{CustomerName,check_in,check_out,roomId,roomType,no_of_rooms,phone_number,emaill});
+        const cachedBooked=cache.get(`bookingData${emaill}`);
 
 console.log(cachedBooked.CustomerName,cachedBooked.check_in,cachedBooked.check_out);
 res.status(200).json({message:'Booking successful'});
@@ -622,11 +622,11 @@ return res.json({Singmsg:'There are currently not enough rooms'});
             });
         };
         const paymentResponse = await verifyPayment(reference);
-        const cachedBooked=cache.get('bookingData');
         
         // Data from registration (cachedData)
         const paymentData=cache.get(reference);
-        const cachedData=cache.get('registrationData');
+        const cachedBooked=cache.get( `bookingData${paymentData.email}`);
+        const cachedData=cache.get(`RegistrationData${paymentData.email}`);
         /**Payment for more than room (later use the cachedData('bookingData') to work with code)*/
         if( paymentResponse.status === 'success' && paymentData.num >1){
                 const updat={
@@ -704,6 +704,10 @@ if (oyaltyResult.reward){
             }
             //PROCESS FOR ONE TIME BOOKING...
             else{
+        const paymentData=cache.get(reference);
+        const cachedBooked=cache.get( `bookingData${paymentData.email}`);
+        const cachedData=cache.get(`RegistrationData${paymentData.email}`);
+                
                 const insert={
                     txt:`insert into twosmilebookings(customer_name,type,check_in,check_out,no_of_rooms,email,phone_numbers,days) values($1,$2,$3,$4,$5,$6,$7)`,
                     vll:[cachedBooked.CustomerName,paymentData.room,cachedBooked.check_in,cachedBooked.check_out,paymentData.num,cachedData.email,roomId,paymentData.days]
@@ -734,7 +738,8 @@ const {tet,val} = update;
 await pool.query(tet,val);
 console.log('Effort paid');
 }
-const cachedBook=cache.get('bookingData');
+const paymentData=cache.get(reference);
+const cachedBook=cache.get(`bookingData${paymentData.email}`);
 const loyaltyResult = await updateLoyaltyPoints(cachedBook.phone_number, 1);
 if (loyaltyResult.reward) {
     console.log(`🎁 Reward triggered at ${loyaltyResult.totalPoints} points for user ${cachedBook.phone_number}`);
@@ -972,6 +977,7 @@ app.listen(port,(err)=>{
 }).on('error',()=>{
     process.exit(1)
 });
+
 
 
 
