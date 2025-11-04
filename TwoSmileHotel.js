@@ -56,7 +56,7 @@ app.use((req, res, next) => {
 
 
 const pool = new Pool({
-  connectionString: 'postgresql://twosmiledb_user:7yqSgK5UCCK2lnvnKv0P3xm0GLbZWGW5@dpg-d450mb3ipnbc73aup4mg-a/twosmiledb',
+  connectionString: 'postgresql://twosmiledb_user:7yqSgK5UCCK2lnvnKv0P3xm0GLbZWGW5@dpg-d450mb3ipnbc73aup4mg-a.frankfurt-postgres.render.com/twosmiledb',
   ssl: {
     rejectUnauthorized: false,
   },
@@ -983,6 +983,7 @@ app.listen(port,(err)=>{
 }).on('error',()=>{
     process.exit(1)
 });
+
 
 
 
