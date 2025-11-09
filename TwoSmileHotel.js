@@ -356,9 +356,9 @@ app.post('/regBone',async(req,res)=>{
     if(awe){
         if(remainingDays >=7){
             console.log("Sent data for regBone... and remainingDays: ",remainingDays);
-           return res.json({success:'pay.html',tiim:remainingDays});
+           return res.json({success:'https://twosmilehotel.onrender.com/pay.html',tiim:remainingDays});
         }else{
-                    res.json({success:'/pay.html'});
+                    res.json({success:'https://twosmilehotel.onrender.com/pay.html'});
                             console.log("Sent data for regBone...")
         }
     }
@@ -983,6 +983,7 @@ app.listen(port,(err)=>{
 }).on('error',()=>{
     process.exit(1)
 });
+
 
 
 
