@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
                     return console.error("Error sending number of days to backend",lerr.statusText);
                  }
                  const ler= await lerr.json();
-                 window.location.href=ler.success;
+                 window.location.href='./pay.html';
                  localStorage.setItem(ler.tiim,'greatDay');
             },6000)
         }
@@ -296,4 +296,5 @@ nttm.addEventListener('click',()=>{
     reth.style.visibility='visible';
     nttm.textContent='Hide';
    }
+
 })
