@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded',async()=>{
                     return console.error("Error sending number of days to backend",lerr.statusText);
                  }
                  const ler= await lerr.json();
-                 window.location.href='./pay.html';
+                 window.location.href='https://twosmilehotel.onrender.com/pay.html';
                  localStorage.setItem(ler.tiim,'greatDay');
             },6000)
         }
@@ -298,3 +298,4 @@ nttm.addEventListener('click',()=>{
    }
 
 })
+
