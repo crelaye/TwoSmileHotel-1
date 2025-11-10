@@ -42,19 +42,19 @@ form3.addEventListener('submit', async (e) => {
       } 
     switch(room){
       case 'Royal Standard':
-        amount.value= simp * parseInt(num) * parseInt(DaysToSpend);
+        amount.value= simp * parseInt(num) * parseInt(reed);
         break;
         case 'Emperial Standard':
-          amount.value= sta * parseInt(num) * parseInt(DaysToSpend);
+          amount.value= sta * parseInt(num) * parseInt(reed);
           break;
           case 'Deluxe Suite':
-            amount.value= del * parseInt(num) * parseInt(DaysToSpend);
+            amount.value= del * parseInt(num) * parseInt(reed);
             break;
             case 'Platinum Suite':
-              amount.value=plat * parseInt(num) * parseInt(DaysToSpend);
+              amount.value=plat * parseInt(num) * parseInt(reed);
               break
               case 'Conference Room':
-                amount.value=con * parseInt(num) * parseInt(DaysToSpend);
+                amount.value=con * parseInt(num) * parseInt(reed);
                 break
             default:
               amount.value=0.00;
@@ -75,7 +75,7 @@ console.log(DaysToSpend);
             room:room,
             num:num,
             reference:refe,
-            days:DaysToSpend
+            days:reed
         })
     });
     if(!response.ok){
@@ -189,5 +189,6 @@ const callBook=async()=>{
 <p id="roomErr"></p>
 
  */
+
 
 
