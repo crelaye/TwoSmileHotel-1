@@ -38,23 +38,23 @@ form3.addEventListener('submit', async (e) => {
       console.log(reed);
       reed=data.msg.days;
       if(reed === undefined){
-        return console.error("Reed is undefined...")
+         console.error("Reed is undefined...")
       } 
     switch(room){
       case 'Royal Standard':
-        amount.value= simp * parseInt(num) * parseInt(reed);
+        amount.value= simp * parseInt(num) * parseInt(DaysToSpend);
         break;
         case 'Emperial Standard':
-          amount.value= sta * parseInt(num) * parseInt(reed);
+          amount.value= sta * parseInt(num) * parseInt(DaysToSpend);
           break;
           case 'Deluxe Suite':
-            amount.value= del * parseInt(num) * parseInt(reed);
+            amount.value= del * parseInt(num) * parseInt(DaysToSpend);
             break;
             case 'Platinum Suite':
-              amount.value=plat * parseInt(num) * parseInt(reed);
+              amount.value=plat * parseInt(num) * parseInt(DaysToSpend);
               break
               case 'Conference Room':
-                amount.value=con * parseInt(num) * parseInt(reed);
+                amount.value=con * parseInt(num) * parseInt(DaysToSpend);
                 break
             default:
               amount.value=0.00;
@@ -75,7 +75,7 @@ console.log(DaysToSpend);
             room:room,
             num:num,
             reference:refe,
-            days:reed
+            days:DaysToSpend
         })
     });
     if(!response.ok){
@@ -189,4 +189,5 @@ const callBook=async()=>{
 <p id="roomErr"></p>
 
  */
+
 
