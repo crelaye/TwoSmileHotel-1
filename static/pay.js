@@ -35,8 +35,8 @@ form3.addEventListener('submit', async (e) => {
     let data=await ert.json();
     console.log(data);
       let reed;
-      reed=data.msg.days;
       console.log(reed);
+      reed=data.msg.days;
       if(reed === undefined){
         return console.error("Reed is undefined...")
       } 
@@ -189,3 +189,4 @@ const callBook=async()=>{
 <p id="roomErr"></p>
 
  */
+
