@@ -15,7 +15,7 @@ const nodemailer=require('nodemailer');
 const crypto=require('crypto');
 const bcrypt=require('bcryptjs')
 const Paystack=require('paystack');
-const paystack=Paystack(process.env.PAYPAL_SECRET_KEY);
+const paystack=Paystack('sk_live_13057de4dee1f40e81d0c09e38710819e3281691');
 const cors=require('cors');
 const { message } = require('emailjs');
 const e = require('express');
@@ -983,6 +983,7 @@ app.listen(port,(err)=>{
 }).on('error',()=>{
     process.exit(1)
 });
+
 
 
 
